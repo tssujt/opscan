@@ -1,0 +1,44 @@
+[project]
+name = "opscan"
+version = "0.1.0"
+description = "Open port scanner"
+authors = [{ name = "tssujt", email = "github@tssujt.xyz" }]
+dependencies = ["typer[all]>=0.9.0"]
+requires-python = ">=3.8"
+readme = "README.md"
+license = { text = "MIT" }
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+[project.scripts]
+opscan = "opscan.cli:app"
+
+[tool.pdm.dev-dependencies]
+dev = ["pytest>=7.4.0", "pytest-cov>=4.1.0"]
+
+[tool.black]
+line-length = 80
+target-version = ["py37", "py38", "py39", "py310", "py311"]
+
+[tool.ruff]
+line-length = 80
+
+[tool.isort]
+profile = "black"
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "if self.debug",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if TYPE_CHECKING:",
+]
+# Regexes for lines to exclude from consideration
+# Don't complain about missing debug-only code:
+# Don't complain if tests don't hit defensive assertion code:
+# Don't complain if non-runnable code isn't run:
+ignore_errors = true
